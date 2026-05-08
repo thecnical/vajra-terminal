@@ -47,20 +47,20 @@ VAJRA is split into two massive components to ensure stability and raw performan
 
 ```mermaid
 graph TD;
-    subgraph VAJRA Terminal (Rust / ratatui)
-    UI[Matrix Cyberpunk UI Engine]
-    State[Memory-Safe State Manager]
-    Events[100ms crossterm Event Loop]
-    Client[Reqwest Async Network Client]
+    subgraph Terminal[VAJRA Terminal - Rust]
+        UI[Matrix Cyberpunk UI Engine]
+        State[Memory-Safe State Manager]
+        Events[100ms crossterm Event Loop]
+        Client[Reqwest Async Network Client]
     end
 
-    subgraph VAJRA Brain (Python / FastAPI)
-    AI[RL AI Exploit Chaining]
-    Web3[Smart Contract Auditor]
-    OSINT[Crypto & SDR Tracker]
-    Defense[Quantum & IDS Defense]
-    Poly[Polymorphic Payload Generator]
-    Chat[In-Terminal AI Assistant]
+    subgraph Brain[VAJRA Brain - Python FastAPI]
+        AI[RL AI Exploit Chaining]
+        Web3[Smart Contract Auditor]
+        OSINT[Crypto & SDR Tracker]
+        Defense[Quantum & IDS Defense]
+        Poly[Polymorphic Payload Generator]
+        Chat[In-Terminal AI Assistant]
     end
 
     Events -->|Mutates| State
