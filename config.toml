@@ -1,0 +1,12 @@
+[network]
+brain_url = "http://127.0.0.1:8000"
+timeout_ms = 30000
+
+[ui]
+theme = "cyberpunk" # options: cyberpunk, matrix_green, blood_red
+refresh_rate_ms = 100
+show_debug_logs = false
+
+[user]
+alias = "Chandan Pandey"
+level = "God-Tier"

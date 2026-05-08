@@ -1,0 +1,17 @@
+[package]
+name = "vajra-terminal"
+version = "1.0.0"
+edition = "2021"
+authors = ["Chandan Pandey <elite@vajra.ai>"]
+description = "VAJRA - The Ultimate Autonomous Cyber Security Framework"
+
+[dependencies]
+crossterm = "0.27"
+ratatui = "0.26"
+tokio = { version = "1.36", features = ["full"] }
+reqwest = { version = "0.12", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sysinfo = "0.30"
+log = "0.4"
+env_logger = "0.11"
