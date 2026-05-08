@@ -1,5 +1,5 @@
 [network]
-brain_url = "https://vajra-brain-api.onrender.com"
+brain_url = "https://vajra-brain.onrender.com"
 timeout_ms = 30000
 
 [ui]

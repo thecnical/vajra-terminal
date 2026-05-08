@@ -19,7 +19,7 @@ impl VajraClient {
     pub fn new() -> Self {
         Self {
             // Pointing to Production Render AI Cloud instead of localhost
-            base_url: "https://vajra-brain-api.onrender.com".to_string(),
+            base_url: "https://vajra-brain.onrender.com".to_string(),
             client: Client::new(),
         }
     }
