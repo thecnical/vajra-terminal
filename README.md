@@ -94,39 +94,44 @@ The terminal maps complex API calls to single keystrokes:
 
 ---
 
-## ⚙️ Installation & Deployment
+## ⚙️ Installation & Usage
 
-It is strictly recommended to use the global `installer.sh` provided in the root repository. However, to build the terminal manually:
+VAJRA operates on a hybrid architecture. The heavy lifting (AI, Web3 Auditing, Fuzzing) is handled by the **Private VAJRA Cloud Brain**. As a user, you only need to run the ultra-lightweight, zero-latency Rust Terminal.
 
 ### Requirements
-*   Rust 1.70+ (`cargo`)
-*   VAJRA Brain running on `127.0.0.1:8000`
+*   Rust 1.70+ installed (`cargo`)
+*   An active internet connection (To connect to the VAJRA AI Cloud)
+
+### Quick Setup
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/thecnical/vajra-terminal.git
 cd vajra-terminal
 
-# Compile for extreme speed (Release Mode)
+# 2. Compile for extreme speed (Release Mode)
 cargo build --release
 
-# Run the environment
+# 3. Enter the Matrix (Run the TUI)
 ./target/release/vajra-terminal
 ```
 
+Once running, the terminal will automatically establish a secure uplink to the central AI Brain.
+
 ## 🛠️ Configuration (`config.toml`)
-Customize your Matrix experience by editing `config.toml`:
+Customize your Matrix experience by editing `config.toml`. You do not need to host your own backend.
 
 ```toml
 [network]
-brain_url = "http://127.0.0.1:8000"
+# Secure uplink to the VAJRA production cloud
+brain_url = "https://vajra-brain-api.onrender.com"
 
 [ui]
-theme = "cyberpunk" # Matrix Red & Neon Green
+theme = "cyberpunk" # Options: cyberpunk, matrix_green, blood_red
 refresh_rate_ms = 100
 
 [user]
-alias = "Chandan Pandey"
+alias = "Chandan Pandey" # Change to your hacker alias
 level = "God-Tier"
 ```
 
