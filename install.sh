@@ -13,12 +13,12 @@ RESET="\e[0m"
 
 echo -e "${RED}"
 cat << "EOF"
-██╗   ██╗ █████╗ ██╗██████╗  █████╗ 
-██║   ██║██╔══██╗██║██╔══██╗██╔══██╗
-██║   ██║███████║██║██████╔╝███████║
-╚██╗ ██╔╝██╔══██║██║██╔══██╗██╔══██║
- ╚████╔╝ ██║  ██║██║██║  ██║██║  ██║
-  ╚═══╝  ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
+██╗   ██╗ █████╗       ██╗██████╗  █████╗  👾
+██║   ██║██╔══██╗      ██║██╔══██╗██╔══██╗
+██║   ██║███████║      ██║██████╔╝███████║
+╚██╗ ██╔╝██╔══██║ ██   ██║██╔══██╗██╔══██║
+ ╚████╔╝ ██║  ██║ ╚█████╔╝██║  ██║██║  ██║
+  ╚═══╝  ╚═╝  ╚═╝  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 EOF
 echo -e "${RESET}"
 echo -e "${CYAN}The Ultimate Cyber Security Framework (2026 Edition)${RESET}"
@@ -37,6 +37,16 @@ if ! command -v cargo &> /dev/null; then
     echo -e "${RED}[!] Rust not found. Installing Rust Toolchain...${RESET}"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     source $HOME/.cargo/env
+fi
+
+echo -e "${CYAN}[*] Installing required Linux build dependencies (OpenSSL & Pkg-Config)...${RESET}"
+if command -v apt-get &> /dev/null; then
+    sudo apt-get update -y
+    sudo apt-get install -y pkg-config libssl-dev build-essential
+elif command -v dnf &> /dev/null; then
+    sudo dnf install -y pkgconf-pkg-config openssl-devel
+elif command -v pacman &> /dev/null; then
+    sudo pacman -Sy --noconfirm pkgconf openssl
 fi
 
 echo -e "${CYAN}[*] Cloning VAJRA Terminal...${RESET}"
