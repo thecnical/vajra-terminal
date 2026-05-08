@@ -102,13 +102,31 @@ We utilize `crossterm` and a strict 100ms event polling architecture. Even if th
 Forget switching tabs to ask ChatGPT. Press `i` to enter typing mode. The `vajra-brain` uses top-tier APIs (OpenRouter/Groq) to parse your exact terminal context and give you step-by-step hacking solutions directly inside the TUI.
 
 ### 3. Quick Command God-Mode
-The terminal maps complex API calls to single keystrokes:
-*   `[a]` **Autonomous Attack Chain**: Instantly maps target intel and generates a multi-stage RCE using AI.
-*   `[p]` **Polymorphic Payload**: Generates a 100% FUD Base64/Obfuscated reverse shell in milliseconds.
-*   `[c]` **Cloud Slaughter**: Audits AWS S3 and IAM JSON policies for Takeover/PrivEsc vectors.
-*   `[z]` **Quantum (Y2Q) Audit**: Runs Shor's Algorithm checks to see if your target's RSA keys are vulnerable to Quantum Computers.
-*   `[t]` **Crypto Trace**: Traces ETH wallets through mixing services (Tornado Cash).
-*   `[s]` **Swarm Sync**: Pushes an IoC hash to the global decentralized P2P network.
+The terminal maps complex API calls to single keystrokes. Below is the God-Tier breakdown of each module:
+
+#### ⚡ `[a]` Autonomous Attack Chain (Groq LPU Engine)
+*   **Why it exists:** Manual hacking is slow. By the time a human enumerates a port, the defender's EDR has already flagged the IP. 
+*   **Execution Flow:** When you press `a`, VAJRA takes the current target intel and feeds it into the `Llama-3 70B` model running on ultra-fast Groq LPUs. The AI acts as an autonomous Red Teamer, chaining vulnerabilities (e.g., SSRF -> AWS Metadata -> IAM Takeover) and outputting a complete, step-by-step Remote Code Execution (RCE) blueprint in milliseconds.
+
+#### 🦠 `[p]` Polymorphic Payload Generator
+*   **Why it exists:** Modern Antivirus (AV) and EDRs easily catch standard MSFvenom payloads using static signatures.
+*   **Execution Flow:** Pressing `p` triggers the Python Backend to generate a dynamic, AES-256 encrypted reverse shell. The encryption key and code structure change *every single time* the command is run. This guarantees a 100% Fully Undetectable (FUD) payload that bypasses static analysis.
+
+#### ☁️ `[c]` Cloud Slaughter (AWS/IAM)
+*   **Why it exists:** The majority of modern data breaches happen due to misconfigured AWS S3 buckets and overly permissive IAM roles.
+*   **Execution Flow:** Pressing `c` initiates a rapid cloud audit using the `boto3` API. VAJRA connects to the target cloud infrastructure, enumerates public buckets, and checks JSON IAM policies for Privilege Escalation vectors (like `iam:PassRole` or `s3:GetObject`), automatically identifying a cloud takeover path.
+
+#### 🌌 `[z]` Quantum (Y2Q) Encryption Audit
+*   **Why it exists:** Quantum computers will soon break RSA-2048 encryption using Shor's Algorithm (Y2Q - Year to Quantum).
+*   **Execution Flow:** Pressing `z` simulates a Quantum attack. It audits the target's SSL/TLS certificates and evaluates their cryptographic strength against simulated Qubit factorization, providing a definitive "Quantum Resilience Score".
+
+#### 🕵️ `[t]` Crypto Wallet Trace (OSINT)
+*   **Why it exists:** Threat actors use cryptocurrency mixers like Tornado Cash to launder money.
+*   **Execution Flow:** Press `t` to trace an Ethereum (ETH) or Bitcoin (BTC) address. VAJRA's OSINT engine queries blockchain ledgers and smart contract interactions to unmask the real-world exit nodes of the laundered money.
+
+#### 🕸️ `[s]` Decentralized Swarm Sync (P2P)
+*   **Why it exists:** Centralized threat intel feeds (like VirusTotal) are monitored by defenders. Hackers need an untraceable network.
+*   **Execution Flow:** Pressing `s` pushes your discovered Zero-Day hashes and Indicators of Compromise (IoCs) to a decentralized, peer-to-peer (P2P) network. All other VAJRA nodes globally sync this data instantly, creating an unstoppable hive-mind of threat intelligence.
 
 ---
 
