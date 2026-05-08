@@ -1,12 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct BackendStatus {
-    pub status: String,
-    pub creator: String,
-    pub modules_active: u32,
-    pub swarm_nodes: u32,
-}
+use crate::network::client::BackendStatus;
 
 pub struct AppState {
     pub active_tab: usize,

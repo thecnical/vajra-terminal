@@ -17,7 +17,7 @@ pub fn draw_ui(f: &mut Frame, app: &AppState) {
         .split(size);
 
     // --- 1. HEADER (TABS) ---
-    let titles = vec!["🔴 OFFENSIVE", "🔵 DEFENSIVE", "🟡 INTELLIGENCE", "🌐 WEB3/CRYPTO"]
+    let titles: Vec<Line> = vec!["🔴 OFFENSIVE", "🔵 DEFENSIVE", "🟡 INTELLIGENCE", "🌐 WEB3/CRYPTO"]
         .into_iter()
         .map(|t| Line::from(Span::styled(t, Style::default().fg(Color::White).add_modifier(Modifier::BOLD))))
         .collect();

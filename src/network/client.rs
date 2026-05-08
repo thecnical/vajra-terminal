@@ -63,6 +63,12 @@ impl VajraClient {
         Ok(res.text().await?)
     }
 
+    pub async fn generate_payload(&self, lhost: &str, lport: u32) -> Result<String, Box<dyn Error>> {
+        let payload = serde_json::json!({ "target_os": "linux", "format": "elf", "lhost": lhost, "lport": lport });
+        let res = self.client.post(&format!("{}/api/offensive/polymorphic-payload", self.base_url)).json(&payload).send().await?;
+        Ok(res.text().await?)
+    }
+
     pub async fn chat_with_ai(&self, message: &str, context: &str) -> Result<String, Box<dyn Error>> {
         let payload = serde_json::json!({ "message": message, "context": context });
         let res = self.client.post(&format!("{}/api/chat", self.base_url)).json(&payload).send().await?;
