@@ -12,8 +12,13 @@
 
 ---
 
-![VAJRA Interface](assets/vajra_matrix_tui.png)
-*(VAJRA Terminal operating in full Matrix Mode. Image representation.)*
+```text
+========================================================================
+[+] VAJRA SECURE UPLINK ESTABLISHED. 
+[+] MATRIX TUI ENGAGED.
+[+] AWAITING COMMAND...
+========================================================================
+```
 
 ## 📖 What is VAJRA? (The 'Why')
 
@@ -41,20 +46,20 @@ In an era of polymorphic malware, AI-driven phishing, and Quantum-computing thre
 
 ---
 
-## 🏗️ Deep Architecture Mapping
+## 🏗️ Deep Architecture Mapping & Execution Flow
 
-VAJRA is split into two massive components to ensure stability and raw performance. The **Terminal (Frontend)** runs locally with zero overhead, while the **Brain (Backend)** can be hosted on cloud GPUs for intensive machine learning tasks.
+VAJRA operates on a hybrid architecture. The heavy lifting (AI, Web3 Auditing, Fuzzing) is handled by the **Private VAJRA Cloud Brain**. As a user, you only need to run the ultra-lightweight, zero-latency Rust Terminal. Below is the exact execution flow of the framework's God-Tier modules.
 
 ```mermaid
 graph TD;
-    subgraph Terminal[VAJRA Terminal - Rust]
+    subgraph Terminal[VAJRA Terminal - Rust Frontend]
         UI[Matrix Cyberpunk UI Engine]
         State[Memory-Safe State Manager]
         Events[100ms crossterm Event Loop]
         Client[Reqwest Async Network Client]
     end
 
-    subgraph Brain[VAJRA Brain - Python FastAPI]
+    subgraph Brain[VAJRA Brain - Python FastAPI Backend]
         AI[RL AI Exploit Chaining]
         Web3[Smart Contract Auditor]
         OSINT[Crypto & SDR Tracker]
@@ -63,14 +68,27 @@ graph TD;
         Chat[In-Terminal AI Assistant]
     end
 
+    %% Core Connectivity
     Events -->|Mutates| State
     State -->|Triggers UI Render| UI
     Events -->|Shortcut Keys| Client
-    Client <-->|Asynchronous JSON via HTTP| AI
-    Client <-->|Asynchronous JSON via HTTP| Web3
-    Client <-->|Asynchronous JSON via HTTP| Defense
-    Client <-->|Asynchronous JSON via HTTP| Poly
-    Client <-->|Contextual Prompts| Chat
+    Client ====>|Secure HTTPS Uplink| Brain
+
+    %% Execution Flows
+    Client -->|Key 'a'| AI
+    AI -.->|Contextual Exploit| RL_Engine[Reinforcement Learning Path]
+    
+    Client -->|Key 'p'| Poly
+    Poly -.->|Obfuscation| AES_Crypt[Dynamic AES-256 Reverse Shells]
+    
+    Client -->|Key 'z'| Defense
+    Defense -.->|Y2Q Audit| Shors_Algo[Shor's Algorithm Simulation]
+
+    Client -->|Key 'c'| Web3
+    Web3 -.->|EVM Bytecode| Flash_Loan[Flash-Loan / Reentrancy Detection]
+
+    Client -->|Key 'i'| Chat
+    Chat -.->|Context-Aware| LLM[Llama-3 70B Model via Groq]
 ```
 
 ---
@@ -116,24 +134,10 @@ cargo build --release
 ./target/release/vajra-terminal
 ```
 
-Once running, the terminal will automatically establish a secure uplink to the central AI Brain.
+Once running, the terminal will automatically establish a secure uplink to the central VAJRA AI Cloud.
 
-## 🛠️ Configuration (`config.toml`)
-Customize your Matrix experience by editing `config.toml`. You do not need to host your own backend.
-
-```toml
-[network]
-# Secure uplink to the VAJRA production cloud
-brain_url = "https://vajra-brain-api.onrender.com"
-
-[ui]
-theme = "cyberpunk" # Options: cyberpunk, matrix_green, blood_red
-refresh_rate_ms = 100
-
-[user]
-alias = "Chandan Pandey" # Change to your hacker alias
-level = "God-Tier"
-```
+## 🛠️ Customization
+You can customize your Matrix experience by modifying the UI settings in the configuration. The terminal runs out-of-the-box with zero backend setup required by the end-user.
 
 ## 📈 SEO Keywords & Indexing
 `Cybersecurity Framework 2026`, `Autonomous Penetration Testing`, `AI Red Teaming Tool`, `Web3 Smart Contract Auditor CLI`, `Rust Terminal User Interface Security`, `Quantum Ready Encryption Scanner`, `Polymorphic Payload Generator`.
