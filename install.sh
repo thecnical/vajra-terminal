@@ -33,20 +33,36 @@ if [ "$1" == "uninstall" ]; then
 fi
 
 echo -e "${CYAN}[*] Checking system requirements...${RESET}"
-if ! command -v cargo &> /dev/null; then
+
+# Smart check for Rust to prevent infinite reinstalls in non-interactive shells
+if ! command -v cargo &> /dev/null && [ ! -f "$HOME/.cargo/bin/cargo" ]; then
     echo -e "${RED}[!] Rust not found. Installing Rust Toolchain...${RESET}"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source $HOME/.cargo/env
+else
+    echo -e "${GREEN}[+] Rust is already installed. Skipping...${RESET}"
 fi
 
-echo -e "${CYAN}[*] Installing required Linux build dependencies (OpenSSL & Pkg-Config)...${RESET}"
+# Ensure cargo is in PATH for this script session
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+fi
+
+echo -e "${CYAN}[*] Checking required Linux build dependencies (OpenSSL & Pkg-Config)...${RESET}"
 if command -v apt-get &> /dev/null; then
-    sudo apt-get update -y
-    sudo apt-get install -y pkg-config libssl-dev build-essential
+    if ! dpkg -s pkg-config libssl-dev build-essential &> /dev/null; then
+        sudo apt-get update -y
+        sudo apt-get install -y pkg-config libssl-dev build-essential
+    else
+        echo -e "${GREEN}[+] Debian/Kali dependencies already installed. Skipping...${RESET}"
+    fi
 elif command -v dnf &> /dev/null; then
-    sudo dnf install -y pkgconf-pkg-config openssl-devel
+    if ! rpm -q pkgconf-pkg-config openssl-devel &> /dev/null; then
+        sudo dnf install -y pkgconf-pkg-config openssl-devel
+    fi
 elif command -v pacman &> /dev/null; then
-    sudo pacman -Sy --noconfirm pkgconf openssl
+    if ! pacman -Qs pkgconf openssl &> /dev/null; then
+        sudo pacman -Sy --noconfirm pkgconf openssl
+    fi
 fi
 
 echo -e "${CYAN}[*] Cloning VAJRA Terminal...${RESET}"
