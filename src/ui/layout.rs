@@ -23,7 +23,7 @@ pub fn draw_ui(f: &mut Frame, app: &AppState) {
         .collect();
     
     let tabs = Tabs::new(titles)
-        .block(Block::default().borders(Borders::ALL).title(" VAJRA GOD-TIER FRAMEWORK | CREATED BY CHANDAN PANDEY "))
+        .block(Block::default().borders(Borders::ALL).title(" 👾 VAJRA GOD-TIER FRAMEWORK | CREATED BY CHANDAN PANDEY "))
         .select(app.active_tab)
         .style(Style::default().fg(Color::DarkGray))
         .highlight_style(Style::default().fg(Color::Red).add_modifier(Modifier::BOLD));
